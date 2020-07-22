@@ -3,58 +3,22 @@ function calculate( )
 {
 //############
 
-   /*
-var x1  = document.form.x1.value; //Считываем с поля
-var y1  = document.form.y1.value; //Считываем с поля
-
-var x2  = document.form.x2.value; //Считываем с поля
-var y2  = document.form.y2.value; //Считываем с поля
-
-var x3  = document.form.x3.value; //Считываем с поля
-var y3  = document.form.y3.value; //Считываем с поля
-
-	x1 = Number(x1);
-	x2 = Number(x2);
-	x3 = Number(x3);
-
-	y1 = Number(y1);
-	y2 = Number(y2);
-	y3 = Number(y3);
-// */
-	
 	
 	var KOL_PNTS  = document.form.kol_points.value;
 	KOL_PNTS = Number(KOL_PNTS);
 	
-	document.write("<br>перем точек = "+KOL_PNTS);
-	
-	// var min = 0;//юзлес
-
+	document.write("Будет точек: "+KOL_PNTS);
 	
 	var cords_X  = new Array(KOL_PNTS+1);//чтоб с 1
 	var cords_Y  = new Array(KOL_PNTS+1);
 
 	
-
-	
-	
-
-	
-	
-	
-	document.write("<br>рисуем график");
+	document.write("<br><br>Рисуем график");
 		draw_grafic("black");	//просто сетка
 	
 
-
-
-
-
-
-	
-
 //######################################### Рисуем все точки	
-	var colors  = new Array(7);
+	var colors  = new Array(6);
 	
 	colors[0] = "black";
 	colors[1] = "black";
@@ -73,20 +37,14 @@ var y3  = document.form.y3.value; //Считываем с поля
 		cords_X[i] = Math.round(Math.random() * max + sdvig);
 		cords_Y[i] = Math.round(Math.random() * max + sdvig);
 		
-		document.write("<br>рисуем точку N_"+i+": X="+cords_X[i]+" Y="+cords_Y[i]);
+		document.write("<br>Рисуем точку N_"+i+": X="+cords_X[i]+" Y="+cords_Y[i]);
 
 		var buf = Math.round( Math.random()*5)//если вылезет за размер массива, нарисует зеленым(дефолт) ;
 		draw_point(cords_X[i],cords_Y[i], colors[ buf ] );	
 	}
-document.write("<br> все точки отрисованы");
-
-
-
-	/*
-
-
-// */
 	
+	document.write("<br>Все точки отрисованы.<br>");
+
 
 //############ Средняя	
 	var X_sum = 0;
@@ -102,15 +60,9 @@ document.write("<br> все точки отрисованы");
 	var Y_avg = Y_sum / KOL_PNTS;
 	
 	draw_point(X_avg, Y_avg ,"red");
-	
-//############
 
-
-
-
-//########################################################################################################
-//  /*
 //#################################################################### Подсчет СУММ и другого
+	
 	var m_XY  = new Array(KOL_PNTS+1);//5 полей без нулевого
 	var m_XX  = new Array(KOL_PNTS+1);
 	var m_SUM = new Array(5); // 0 1 2 3 4
@@ -136,37 +88,29 @@ document.write("<br> все точки отрисованы");
 			m_SUM[4] += m_XX[i];
 		}
 		
-		document.write("<br>Сумма  X = "+m_SUM[1]);
-		document.write("<br>Сумма  Y = "+m_SUM[2]);
-		document.write("<br>Сумма  XY = "+m_SUM[3]);
-		document.write("<br>Сумма  XX = "+m_SUM[4]);
+	document.write("<br>Сумма  X = "+m_SUM[1]);
+	document.write("<br>Сумма  Y = "+m_SUM[2]);
+	document.write("<br>Сумма  XY = "+m_SUM[3]);
+	document.write("<br>Сумма  XX = "+m_SUM[4]);
+	document.write("<br><br>");
 
-		
-		
-	document.write("<br>УЖЕ Посчитаны ВСЕ суммы");
+	//document.write("<br>Все суммы посчитаны.");
 	
-//###############################################################################################################################
-
-// */
+//##################################################################
 
 
-
-	document.write("<table border =1>"); 
-  
+	document.write("<table border=1>"); 
 	document.write("<tr>   <td> @ </td>  ");
-		for (c = 1 ; c < KOL_PNTS+1; c++) //столько сколько точек
-			{
-				document.write("<td> i="+ c +"</td>");	
-			}
 	
+	for (c = 1 ; c < KOL_PNTS+1; c++) //столько сколько точек
+		{
+			document.write("<td> i="+ c +"</td>");	
+		}
 	
 	document.write("	<td> SUM </td>    </tr>");//Всегда одна
 
 
-
-//все что выше правильно и робит
-
-// /*
+//############
 
 	var m_buf = new Array(5);
 
@@ -177,76 +121,54 @@ document.write("<br> все точки отрисованы");
 
 
 
-for (var i=1 ; i < 5 ; i++) //строк  //надо 4 шт (робит)
-{
-	document.write("<tr>");//новая строка
-
-	document.write("<td>"+ m_buf[i] +"</td>"); // 1 ячейка новой строки		//робит как надо
-	
-	for (c = 1 ; c < KOL_PNTS+1; c++) //столько сколько точек
+	for (var i=1 ; i < 5 ; i++) //строк  //надо 4 шт
 	{
-		switch ( i )  
+		document.write("<tr>");//новая строка
+
+		document.write("<td>"+ m_buf[i] +"</td>"); // 1 ячейка новой строки
+		
+		for (c = 1 ; c < KOL_PNTS+1; c++) //столько сколько точек
 		{
-			case 1 :      document.write("<td>"+ cords_X[c] +"</td>");     break;
-			case 2 :      document.write("<td>"+ cords_Y[c] +"</td>");     break;
-			case 3 :      document.write("<td>"+  m_XY[c]   +"</td>");     break;
-			case 4 :      document.write("<td>"+  m_XX[c]   +"</td>");     break;
-			default:	    document.write("<br>  ДЕФОЛТ!!!!!"); break;
-		}	
+			switch ( i )  
+			{
+				case 1 :      document.write("<td>"+ cords_X[c] +"</td>");     break;
+				case 2 :      document.write("<td>"+ cords_Y[c] +"</td>");     break;
+				case 3 :      document.write("<td>"+  m_XY[c]   +"</td>");     break;
+				case 4 :      document.write("<td>"+  m_XX[c]   +"</td>");     break;
+				default:	    document.write("<br>  Ошибка!"); break;
+			}	
+		}
+
+		document.write("<td> "+ m_SUM[i] +"</td>");  // всегда последняя (после всех точек)
+
+		document.write("</tr>");//конец строки
+
 	}
 
-	document.write("<td> "+ m_SUM[i] +"</td>");  // всегда последняя (после всех точек)
-
-	document.write("</tr>");//конец строки
-
-}
-
-
-document.write("</table>");
-
-
-
+	document.write("</table>");
 
 //####################################
 //####################################
 
 
-//A B сошлись полностью
-var A = (    KOL_PNTS * m_SUM[3]    -    m_SUM[1] * m_SUM[2]   )  /  (  KOL_PNTS * m_SUM[4] - Math.pow( m_SUM[1] , 2)   )
-var B = (    m_SUM[2] - A * m_SUM[1]    )    /  (   KOL_PNTS   );
+	//A B сошлись полностью
+	var A = (    KOL_PNTS * m_SUM[3]    -    m_SUM[1] * m_SUM[2]   )  /  (  KOL_PNTS * m_SUM[4] - Math.pow( m_SUM[1] , 2)   )
+	var B = (    m_SUM[2] - A * m_SUM[1]    )    /  (   KOL_PNTS   );
 
 
+	document.write("<br>A = "+A);
+	document.write("<br>B = "+B);
 
+	draw_line_fun( A , B , 0.01 , "red");
 
-document.write("<br>A = "+A);
-document.write("<br>B = "+B);
-
-
-
-//var dist = points_distance(1,1  ,  4,6);
-//document.write("<br>Dist = "+dist);
-
-
-draw_line_fun( A , B , 0.01 , "red"); //робит точно
-
-
-
-
-
+	document.write("<br><br>Конец скрипта");
 	
-
-
-
-
-
-document.write("<br>#END_ALL");
 }//Конец Функции
 
 
 
 
 
-//робит  с дефлотом
 function draw_grafic( color = "black")
 {
 	
@@ -262,14 +184,15 @@ function draw_grafic( color = "black")
     var w=screen.width;
 	var h=screen.height;     
     var x0=w/2;
-	var y0=h/2;//2     
-	// /*
+	var y0=h/2;    
+	
 	//    Рисуем координатные оси с центром в (x0,y0)	//+8
     for (var i=1; i<w; i=i+8) 
 		document.write( " <div style='top: " +y0+ " ; left: " +i+ " '>_</div> " );     
 	
 	for (var i=1; i<h; i=i+8) 
 		document.write( " <div style='left: " +x0+ " ; top: " +i+ " '>|</div> " );     
+	
 	
 	//    Назначаем коэффициенты масштабирования графика по x (kx) и y (ky)
 	var kx= w/25;
@@ -311,31 +234,20 @@ function draw_line_fun( K , B , Step = 0.01, color = "green")
 	kx= w/25;
 	ky= h/25;//70 //насколько мелкий 
 
-	
-	//document.write("<br># K_fun = "+K);
-	//document.write("<br># B_fun = "+B);
-	
-
     document.write("<font color="+color+">");     
-
 
     for ( x =-30; x < 30; x = x+Step )
 	{
-		
-		// y= K*x + B;
 		y = K * x  +  B;
 
 		document.write("<div style='left:"+(x0+kx*x)+";top:"+(y0-ky*y)+" '>.</div>");	
 	}
 	
-	
 	document.write("</font>"); 
-
 
 }
 
 
-//фулл робит с разными
 function draw_line_points( X1 , Y1 , X2 , Y2 , Step = 0.01, color = "blue")
 {
 	
@@ -350,27 +262,18 @@ function draw_line_points( X1 , Y1 , X2 , Y2 , Step = 0.01, color = "blue")
 	ky= h/25;//70 //насколько мелкий 
 
 //#######################
-	//преобраз в функцию
 
+	//преобразуем в функцию
 	// 1 1    4 6
 	var K = (Y2 - Y1)/(X2 - X1); //6-1 / 4-1  = 5/3
     var B = (X1*Y2 - X2*Y1)/(X2 - X1); //  4*1  -   1*6    /   4-1 //до замены
-	// менял  это  и  это   местами ибо другой знак, так норм
- 
-	//document.write("<br># K_pnts = "+(Y2-Y1)+"/"+(X2-X1)+" = "+K);
-	//document.write("<br># B_pnts = ("+(X2*Y1)+"-"+(X1*Y2)+")/"+(X2-X1)+" = "+B);
 
 //#######################
 	
-	//K = 0;
-	//B = 0;
-
     document.write("<font color="+color+">");     
 
     for ( x =-30; x < 30; x = x+Step )
-	{
-		
-		// y= K*x + B;
+	{		
 		y = K * x  +  B;
 
 		document.write("<div style='left:"+(x0+kx*x)+";top:"+(y0-ky*y)+" '>.</div>");	
@@ -378,12 +281,10 @@ function draw_line_points( X1 , Y1 , X2 , Y2 , Step = 0.01, color = "blue")
 	
 	
 	document.write("</font>"); 
-
-
 }
 
 
-//расстояние между точками (робит)
+//расстояние между точками
 function points_distance( X1 , Y1 , X2 , Y2 )
 {
 	var dist = Math.sqrt(  Math.pow( (X2-X1) , 2)     +      Math.pow( (Y2-Y1) , 2) );
@@ -404,11 +305,6 @@ for (var i = 0; i < 6; i++)
 }
 //data[i][j];
 */
-
-
-
-
-
 
 
 
